@@ -28,6 +28,8 @@ const WEATHER_CODES = {
   99: ["⛈️", "Severe thunderstorm"],
 };
 
+const STORAGE_KEY = "weather-dash:last-city";
+
 const $ = (id) => document.getElementById(id);
 const describe = (code) => WEATHER_CODES[code] ?? ["🌡️", "Unknown"];
 
@@ -90,6 +92,11 @@ async function search(name) {
     const weather = await getWeather(place.latitude, place.longitude);
     render(place, weather);
     $("status").textContent = "";
+    try {
+      localStorage.setItem(STORAGE_KEY, place.name);
+    } catch {
+      // storage can be unavailable (private mode); that's fine
+    }
   } catch (err) {
     $("status").textContent = err.message;
   }
@@ -101,4 +108,12 @@ $("search").addEventListener("submit", (e) => {
   if (name) search(name);
 });
 
-search("London");
+function lastCity() {
+  try {
+    return localStorage.getItem(STORAGE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+search(lastCity() || "London");
