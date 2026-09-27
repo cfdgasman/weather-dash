@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weather Dash</title>
+  <meta name="description" content="A tiny, fast weather dashboard powered by Open-Meteo.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Weather Dash</h1>
+      <form id="search" autocomplete="off">
+        <input id="city" type="search" placeholder="Search a city…" aria-label="City" required>
+        <button type="submit">Search</button>
+      </form>
+    </header>
+
+    <p id="status" role="status"></p>
+
+    <section id="current" hidden>
+      <div class="place" id="place"></div>
+      <div class="now">
+        <span class="icon" id="now-icon"></span>
+        <span class="temp" id="now-temp"></span>
+      </div>
+      <div class="desc" id="now-desc"></div>
+      <dl class="stats">
+        <div><dt>Feels like</dt><dd id="now-feels"></dd></div>
+        <div><dt>Humidity</dt><dd id="now-hum"></dd></div>
+        <div><dt>Wind</dt><dd id="now-wind"></dd></div>
+      </dl>
+    </section>
+
+    <section id="forecast" hidden>
+      <h2>7-day forecast</h2>
+      <ol id="days"></ol>
+    </section>
+
+    <footer>
+      Data by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> ·
+      <a href="https://github.com/cfdgasman/weather-dash" target="_blank" rel="noopener">Source</a>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
