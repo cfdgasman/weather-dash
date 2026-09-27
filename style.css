@@ -1,0 +1,106 @@
+:root {
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --text: #1c2233;
+  --muted: #667085;
+  --accent: #2f6fed;
+  --border: #e3e7ef;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1420;
+    --card: #182033;
+    --text: #e8ecf5;
+    --muted: #9aa4b8;
+    --accent: #6b9bff;
+    --border: #273149;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+h1 { margin: 0; font-size: 1.6rem; }
+h2 { font-size: 1rem; color: var(--muted); font-weight: 600; }
+
+form { display: flex; gap: 8px; flex: 1 1 260px; max-width: 360px; }
+
+input, button {
+  font: inherit;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+}
+
+input { flex: 1; min-width: 0; }
+
+button {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+#status { color: var(--muted); min-height: 1.5em; }
+
+section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 16px;
+}
+
+.place { font-weight: 600; }
+.now { display: flex; align-items: center; gap: 12px; margin-top: 8px; }
+.icon { font-size: 3rem; }
+.temp { font-size: 3rem; font-weight: 700; }
+.desc { color: var(--muted); }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 16px 0 0;
+}
+.stats dt { color: var(--muted); font-size: 0.85rem; }
+.stats dd { margin: 0; font-weight: 600; }
+
+#days { list-style: none; padding: 0; margin: 0; }
+#days li {
+  display: grid;
+  grid-template-columns: 4.5rem 2rem 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  border-top: 1px solid var(--border);
+}
+#days li:first-child { border-top: 0; }
+#days .range { font-variant-numeric: tabular-nums; }
+#days .lo { color: var(--muted); margin-left: 8px; }
+
+footer { margin-top: 24px; color: var(--muted); font-size: 0.85rem; text-align: center; }
+a { color: var(--accent); }
